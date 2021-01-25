@@ -1,47 +1,69 @@
 <?php
-require 'inc/functions.php';
-
-$pageTitle = "Time Tracker";
-$page = null;
-
-include 'inc/header.php';
+include "includes/db.php";
+include "includes/header.php";
 ?>
-	<div class="section catalog random">
-    <div class="col-container actions-container">
+    
+    <!-- Navigation -->
+    <?php
+    include "includes/navigation.php"
+    ?>
 
-      <h1>Welkom op het reserveringssysteem van La Femm!</h1>
-      <p class="actions-copy">Wij willen u alvast bedanken voor uw bezoek.</p>
-      <div class="actions-wrapper">
-        <ul class="actions">
-          <li class="actions-item">
-            <a class="actions-link" href="task.php">
-              <span class="actions-icon">
-                <svg viewbox="0 0 64 64"><use xlink:href="#task_icon"></use></svg>
-              </span>
-              Afspraak maken
-            </a>
-          </li>
-          <li class="actions-item">
-            <a class="actions-link" href="project.php">
-              <span class="actions-icon">
-                <svg viewbox="0 0 64 64"><use xlink:href="#project_icon"></use></svg>
-              </span>
-              Behandelingen
-            </a>
-          </li>
-          <li class="actions-item">
-            <a class="actions-link" href="reports.php">
-              <span class="actions-icon">
-                <svg viewbox="0 0 64 64"><use xlink:href="#report_icon"></use></svg>
-              </span>
-              Afrekenen
-            </a>
-          </li>
-        </ul>
-      </div>
+    <!-- Page Content -->
+    <div class="container">
 
-		</div>
+        <div class="row">
 
-	</div>
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+                
+                <?php
+                $query = "SELECT * FROM posts;";
+                $select_all_posts_query = mysqli_query($connection, $query);
 
-<?php include("inc/footer.php"); ?>
+                // Iteration from the database.
+                while($row = mysqli_fetch_assoc($select_all_posts_query)) {
+                    $post_title = $row['post_title'];
+                    $post_author = $row['post_author'];
+                    $post_date = $row['post_date'];
+                    $post_image = $row['post_image'];
+                    $post_content = $row['post_content'];
+                    ?>
+                    
+                <h1 class="page-header">
+                    Page Heading
+                    <small>Secondary Text</small>
+                </h1>
+
+                <!-- First Blog Post -->
+                <h2>
+                    <a href="#"><?= $post_title; ?></a>
+                </h2>
+                <p class="lead">
+                    by <a href="index.php"><?= $post_author; ?></a>
+                </p>
+                <p><span class="glyphicon glyphicon-time"></span><?= $post_date; ?></p>
+                <hr>
+                <img class="img-responsive" src="images/<?= $post_image; ?>" alt="">
+                <hr>
+                <p><?= $post_content; ?></p>
+                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+                <hr>
+                    
+                <?php } ?>
+                        
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <?php
+            include "includes/sidebar.php";
+            ?>
+
+        </div>
+        <!-- /.row -->
+        
+        <hr>
+        
+<?php
+include "includes/footer.php";      
+?>
