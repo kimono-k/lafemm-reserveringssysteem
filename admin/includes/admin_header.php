@@ -2,6 +2,15 @@
 include "../includes/db.php";
 include "functions.php";
 ob_start(); // Needed when you are going to redirect users e.g. header function, buffers request.
+session_start();
+
+if (!isset($_SESSION['user_role'])) {
+    header("Location: ../index.php");
+}
+    
+// if session user role == admin then...
+    
+// if session user role == subscriber then...
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +24,7 @@ ob_start(); // Needed when you are going to redirect users e.g. header function,
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>La Femm - Reserveringssysteem</title>
+    <title>SB Admin - Bootstrap Admin Template</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +41,10 @@ ob_start(); // Needed when you are going to redirect users e.g. header function,
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
 
 </head>
 

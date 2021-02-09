@@ -8,11 +8,7 @@
 
 body {
     margin-top: 100px;
-    background-color: pink;
-}
-
-a {
-    color: deeppink;
+    background-color: #222;
 }
 
 @media(min-width:768px) {
@@ -28,7 +24,7 @@ a {
 #page-wrapper {
     width: 100%;
     padding: 0;
-    background-color: #f6ecf0;
+    background-color: #fff;
 }
 
 .huge {
@@ -61,7 +57,7 @@ a {
     padding-top: 15px;
     padding-bottom: 15px;
     line-height: 20px;
-    color: #000000; /* JOSHUA EDIT */
+    color: #999;
 }
 
 .top-nav>li>a:hover,
@@ -225,4 +221,8 @@ ul.alert-dropdown {
 
 .panel-yellow a:hover {
     color: #df8a13;
+}
+
+#bulkOptionContainer {
+    padding: 0px;
 }
